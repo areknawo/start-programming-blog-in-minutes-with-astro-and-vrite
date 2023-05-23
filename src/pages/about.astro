@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/BlogPost.astro";
+import { client } from "virtual:vrite";
+
+const profile = await client.profile.get();
+---
+
+<Layout
+  title={profile.fullName || "About me"}
+  description="Lorem ipsum dolor sit amet"
+  pubDate={new Date("May 23 2023")}
+  updatedDate={new Date("May 23 2023")}
+  heroImage="/placeholder-about.jpg"
+>
+  <p>{profile.bio}</p>
+</Layout>
